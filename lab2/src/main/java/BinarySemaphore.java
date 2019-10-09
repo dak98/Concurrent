@@ -1,3 +1,5 @@
+import java.security.InvalidParameterException;
+
 public class BinarySemaphore {
     /**
      * This variable can have one of two values: 0 or 1 (the default). Value 0
@@ -6,8 +8,11 @@ public class BinarySemaphore {
      */
     private int value;
 
-    public BinarySemaphore() {
-        value = 1;
+    public BinarySemaphore(int intialValue) {
+        if (intialValue < 0 || intialValue > 1)
+            throw new InvalidParameterException("Initial values different " +
+                                                "from 0 or 1");
+        value = intialValue;
     }
 
     /**
@@ -29,13 +34,6 @@ public class BinarySemaphore {
      * Increments the value of the semaphore. Blocks if it is already 0.
      */
     public synchronized void V() {
-        while (value == 1) {
-            try {
-                this.wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
         value = 1;
         notifyAll();
     }
