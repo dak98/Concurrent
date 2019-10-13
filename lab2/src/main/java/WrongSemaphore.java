@@ -1,5 +1,7 @@
 import java.security.InvalidParameterException;
 
+import static java.lang.Thread.sleep;
+
 public class WrongSemaphore {
     private int value;
 
@@ -24,7 +26,6 @@ public class WrongSemaphore {
         if (value == 0)
             System.out.println("An error occured! Value can not be 0 here");
         value = 0;
-        notifyAll();
     }
 
     /**
@@ -32,6 +33,6 @@ public class WrongSemaphore {
      */
     public synchronized void V() {
         value = 1;
-        notifyAll();
+        notify();
     }
 }

@@ -27,7 +27,6 @@ public class BinarySemaphore {
             }
         }
         value = 0;
-        notifyAll();
     }
 
     /**
@@ -35,6 +34,6 @@ public class BinarySemaphore {
      */
     public synchronized void V() {
         value = 1;
-        notifyAll();
+        notify();
     }
 }
