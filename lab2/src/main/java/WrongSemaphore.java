@@ -21,6 +21,8 @@ public class WrongSemaphore {
                 e.printStackTrace();
             }
         }
+        if (value == 0)
+            System.out.println("An error occured! Value can not be 0 here");
         value = 0;
         notifyAll();
     }
