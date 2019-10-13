@@ -31,7 +31,7 @@ public class BinarySemaphore {
     }
 
     /**
-     * Increments the value of the semaphore. Blocks if it is already 0.
+     * Increments the value of the semaphore.
      */
     public synchronized void V() {
         value = 1;
