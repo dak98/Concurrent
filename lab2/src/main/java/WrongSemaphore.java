@@ -20,7 +20,7 @@ public class WrongSemaphore {
             try {
                 this.wait();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                // Ignore this exception
             }
         }
         if (value == 0)
