@@ -15,7 +15,7 @@ public class CountingSemaphore {
         this.currentThreadCount = maximumThreadCount;
     }
 
-    public synchronized void P() {
+    public void P() {
         countSemaphore.P();
         currentThreadCount--;
         if (currentThreadCount < 0) {
@@ -25,7 +25,7 @@ public class CountingSemaphore {
         countSemaphore.V();
     }
 
-    public synchronized void V() {
+    public void V() {
         countSemaphore.P();
         currentThreadCount++;
         if (currentThreadCount <= 0)
