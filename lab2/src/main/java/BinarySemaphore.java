@@ -26,14 +26,15 @@ public class BinarySemaphore {
                 e.printStackTrace();
             }
         }
-        value = 0;
+        value--;
     }
 
     /**
      * Increments the value of the semaphore.
      */
     public synchronized void V() {
-        value = 1;
+        if (value == 0)
+            value++;
         notify();
     }
 }
