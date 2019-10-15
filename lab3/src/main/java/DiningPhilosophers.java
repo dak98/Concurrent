@@ -5,7 +5,8 @@ import static java.lang.Thread.sleep;
 
 enum Method {
     NAIVE,
-    STARVE
+    STARVE,
+    WAITER
 }
 
 public class DiningPhilosophers {
@@ -46,6 +47,10 @@ public class DiningPhilosophers {
                 case STARVE:
                     philosophers.add(new StarvingPhilosopher(i + 1, leftFork,
                                                              rightFork, table));
+                    break;
+                case WAITER:
+                    philosophers.add(new WaiterPhilosopher(i + 1, leftFork,
+                                                           rightFork, table));
                     break;
             }
         }
