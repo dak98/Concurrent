@@ -4,7 +4,8 @@ import java.util.concurrent.Semaphore;
 import static java.lang.Thread.sleep;
 
 enum Method {
-    NAIVE
+    NAIVE,
+    STARVE
 }
 
 public class DiningPhilosophers {
@@ -41,6 +42,10 @@ public class DiningPhilosophers {
                 case NAIVE:
                     philosophers.add(new NaivePhilosopher(i + 1, leftFork,
                                                           rightFork));
+                    break;
+                case STARVE:
+                    philosophers.add(new StarvingPhilosopher(i + 1, leftFork,
+                                                             rightFork, table));
                     break;
             }
         }
