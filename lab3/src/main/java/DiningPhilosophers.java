@@ -4,6 +4,7 @@ import java.util.concurrent.Semaphore;
 import static java.lang.Thread.sleep;
 
 enum Method {
+    ASYMMETRIC,
     NAIVE,
     STARVE,
     WAITER
@@ -40,6 +41,10 @@ public class DiningPhilosophers {
             var rightFork = forks.get((i + 1) % philosophersCount);
 
             switch (method) {
+                case ASYMMETRIC:
+                    philosophers.add(new AsymmetricPhilosopher(i + 1, leftFork,
+                                                               rightFork, table));
+                    break;
                 case NAIVE:
                     philosophers.add(new NaivePhilosopher(i + 1, leftFork,
                                                           rightFork));
@@ -51,7 +56,6 @@ public class DiningPhilosophers {
                 case WAITER:
                     philosophers.add(new WaiterPhilosopher(i + 1, leftFork,
                                                            rightFork, table));
-                    break;
             }
         }
 
