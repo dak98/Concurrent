@@ -1,7 +1,7 @@
 import java.util.concurrent.Semaphore;
 
 public class StarvingPhilosopher extends Philosopher {
-    Semaphore table;
+    private Semaphore table;
 
     public StarvingPhilosopher(int id, Semaphore leftFork, Semaphore rightFork,
                                Semaphore table) {
